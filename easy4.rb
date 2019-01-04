@@ -185,21 +185,220 @@
 
 
 
-def multiply(array, number)
+# def multiply(array, number)
 
-  counter = 0 
-  new_array = []
-  loop do
-    break if counter >= array.length
-    new_array << array[counter] * number
-  counter += 1
+#   counter = 0 
+#   new_array = []
+#   loop do
+#     break if counter >= array.length
+#     new_array << array[counter] * number
+#   counter += 1
+#   end
+#   new_array
+# end
+
+# my_numbers = [1, 4, 3, 7, 2, 6]
+# p multiply(my_numbers, 3) #
+
+
+
+
+
+
+def leap_year1?(year)
+
+ if year % 400 == 0
+    true 
+  elsif year % 100 == 0
+    false
+  elsif year % 4 == 0
+    true
+  else  
+    false
+  end 
+end 
+
+# p leap_year?(2016) == true
+# p leap_year?(2015) == false
+# p leap_year?(2100) == false
+# p leap_year?(2400) == true
+# p leap_year?(240000) == true
+# p leap_year?(240001) == false
+# p leap_year?(2000) == true
+# p leap_year?(1900) == false
+# p leap_year?(1752) == true
+# p leap_year?(1700) == false
+# p leap_year?(1) == false
+# p leap_year?(100) == false
+# p leap_year?(400) == true
+
+
+
+# def leap_year?(year)
+#   if year < 1752
+#     year % 4 == 0
+#   else 
+#     leap_year1?(year)
+#   end
+
+# end 
+
+# p leap_year?(2016) == true
+# p leap_year?(2015) == false
+# p leap_year?(2100) == false
+# p leap_year?(2400) == true
+# p leap_year?(240000) == true
+# p leap_year?(240001) == false
+# p leap_year?(2000) == true
+# p leap_year?(1900) == false
+# p leap_year?(1752) == true
+# p leap_year?(1700) == true
+# p leap_year?(1) == false
+# p leap_year?(100) == true
+# p leap_year?(400) == true
+
+
+
+# def multisum(num)
+#   multiples = []
+
+#   (1..num).each do |n|
+#     multiples << n if (n % 3 == 0) || (n % 5 == 0)
+#   end 
+
+#   multiples.inject(:+)
+# end
+
+# p multisum(3) == 3
+# p multisum(5) == 8
+# p multisum(10) == 33
+# p multisum(1000) == 234168
+
+
+
+# def running_total(arr)
+#   sum = 0
+#   arr.map { |n| sum += n }
+# end 
+
+# def running_total(arr)
+#   sum = 0 
+#   arr.each_with_object([]) { |n, array| array << sum += n }
+
+# end   
+
+# p running_total([2, 5, 13]) == [2, 7, 20]
+# p running_total([14, 11, 7, 15, 20]) == [14, 25, 32, 47, 67]
+# p running_total([3]) == [3]
+# p running_total([]) == []
+
+
+# def string_to_integer(int_string)
+#   number = 0
+#   place_value = 1
+
+#   int_string.reverse.chars do |c|
+#      case c 
+#      when '0' then number += (0 * place_value)
+#      when '1' then number += (1 * place_value)
+#      when '2' then number += (2 * place_value)
+#      when '3' then number += (3 * place_value)
+#      when '4' then number += (4 * place_value)
+#      when '5' then number += (5 * place_value)
+#      when '6' then number += (6 * place_value)
+#      when '7' then number += (7 * place_value)
+#      when '8' then number += (8 * place_value)
+#      when '9'   then number += (9 * place_value)
+#       end   
+#       place_value *= 10
+      
+#   end 
+#   number
+# end 
+
+# p string_to_integer('4321') == 4321
+# p string_to_integer('570') == 570
+
+
+# def string_to_signed_integer(str)
+#   str_array = str.chars
+#   sign = str_array.shift if str[0] == "+" || str[0] == "-"
+#   number = string_to_integer(str_array.join)
+#   if sign == '-'
+#     number * -1
+#   else
+#     number 
+#   end 
+# end 
+
+# p string_to_signed_integer('4321') == 4321
+# p string_to_signed_integer('-570') == -570
+# p string_to_signed_integer('+100') == 100
+
+
+
+def integer_to_string(num)
+  numbers = {'1' => 1, "2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "0" => 0}
+  num_string = []
+  if num == 0 
+    num_string << '0'
+  else
+    loop do 
+      num_string.unshift(num % 10)
+      num = num / 10
+
+      if num < 10
+        num_string.unshift(num)
+   
+        break
+      end
+    end
   end
-  new_array
+  num_string.join
 end
 
-my_numbers = [1, 4, 3, 7, 2, 6]
-p multiply(my_numbers, 3) #
+
+
+# def signed_integer_to_string(integer)
+#   sign = ''
+#   num_string = ''
+#   if integer == 0 
+#     num_string = '0'
+
+#   else 
+   
+#     if integer < 0
+#        integer *= -1
+#        sign = '-'
+#     elsif integer > 0
+#       sign = '+' 
+#     end 
+
+
+#     num_string = integer_to_string(integer)
+
+#     num_string.prepend(sign)
+#   end   
+#     num_string
+# end 
+
+def signed_integer_to_string(number)
+  case number <=> 0
+  when -1 then "-#{integer_to_string(-number)}"
+  when +1 then "+#{integer_to_string(number)}"
+  else         integer_to_string(number)
+  end
+end
+
+p signed_integer_to_string(4321) == '+4321'
+p signed_integer_to_string(-123) == '-123'
+p signed_integer_to_string(0) == '0'
 
 
 
+
+
+# p integer_to_string(4321) == '4321'
+# p integer_to_string(0) == '0'
+# p integer_to_string(5000) == '5000'
 
