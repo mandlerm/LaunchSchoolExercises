@@ -33,17 +33,59 @@ def time_of_day(time)
   minutes = time % 60
   s_hours = ''
   s_mins = ''
+  military_time = ''
+  positive = hours > 0 ? true : false
 
+  if hours == 0 && minutes == 0
+    s_hours = "00"
+    s_mins = "00"        
+  else 
+    
+    s_mins = num_string(minutes)
+   
+    if hours == 0 || hours.abs == 24
+      s_hours = '00'
+    elsif (1..23).include?(hours)
+       s_hours = num_string(hours)
+    elsif hours > 24
+      while hours > 24 
+        hours -= 24
+      end
+      
+      s_hours = num_string(hours)
+    else 
+      
+      while hours < 0 
+        hours += 24
+      end
+        s_hours = num_string(hours)
+    end  
+    
+  end
+
+  # p s_hours, "++++++++++++"
+
+  military_time = "#{s_hours}:#{s_mins}"
+  
+  military_time
 end 
 
-def add_a_digit(num)
-  num.to_s.prepend('0') if num.to_s.size < 2 
+def num_string(num)
+  s_num = ''
+  
+  if num.to_s.size < 2 
+    s_num = num.to_s.prepend('0') 
+  else 
+    s_num = num.to_s
+  end
+  s_num
 end   
 
-# p time_of_day(0) == "00:00"
-# p time_of_day(-3) == "23:57"
-# p time_of_day(35) == "00:35"
-# p time_of_day(-1437) == "00:03"
-# p time_of_day(3000) == "02:00"
-# p time_of_day(800) == "13:20"
+p time_of_day(0) == "00:00"
+
+p time_of_day(35) == "00:35"
+p time_of_day(3000) == "02:00"
+p time_of_day(800) == "13:20"
 p time_of_day(-4231) == "01:29"
+p time_of_day(-3) == "23:57"
+p time_of_day(-1437) == "00:03"
