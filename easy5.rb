@@ -34,50 +34,6 @@ def time_of_day(time)
   s_hours = ''
   s_mins = ''
 
-# set minutes to a string
-  if minutes.to_s.size < 2
-    s_mins = add_a_digit(minutes)
-    
-  else 
-    s_mins = minutes.to_s
-  end
-
-  if hours == 0 || hours == 24 || hours == -24
-    hours = 0
-  elsif (-24..0).include?(hours) 
-    hours += 24
-  else 
-    sign = ''
-
-      if hours < 24
-        sign = 'neg'
-      end 
-      
-      while hours > 24 || hours < -24
-       hours = hours.abs - 24
-
-      end
-     
-      if sign == 'neg'       
-        s_hours = (hours-24).abs
-        
-      # else 
-      #   s_hours = add_a_digit(hours)
-      end
-       
-  end
-
-    if s_hours.to_s.size < 2
-      s_hours = add_a_digit(hours)
-    else   
-      s_hours = hours.to_s
-    end
-
-# p s_hours
-
-  p "#{s_hours}:#{s_mins}"
-  "#{s_hours}:#{s_mins}"
-  
 end 
 
 def add_a_digit(num)
