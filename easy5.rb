@@ -142,9 +142,8 @@
 
 
 def cleanup(sentence)
-
-
+  sentence.gsub(/[^a-zA-Z]/,' ').squeeze(' ')
 end 
 
 
-cleanup("---what's my +*& line?") == ' what s my line '
+p cleanup("---what's my +*& line?") == ' what s my line '
