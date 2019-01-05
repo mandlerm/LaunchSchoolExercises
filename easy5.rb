@@ -164,22 +164,64 @@
 
 ####. PART 2
 
-def word_sizes(sentence)
-  hsh = Hash.new(0)
+# def word_sizes(sentence)
+#   hsh = Hash.new(0)
   
-  sentence.split.each do |word|
-    word.gsub!(/[^a-zA-Z]/, '')
-    hsh[word.size] += 1
-  end 
-  hsh
-end 
+#   sentence.split.each do |word|
+#     word.gsub!(/[^a-zA-Z]/, '')
+#     hsh[word.size] += 1
+#   end 
+#   hsh
+# end 
 
-p word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 2 }
-p word_sizes('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 3 }
-p word_sizes("What's up doc?") == { 5 => 1, 2 => 1, 3 => 1 }
-p word_sizes('') == {}
+# p word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 2 }
+# p word_sizes('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 3 }
+# p word_sizes("What's up doc?") == { 5 => 1, 2 => 1, 3 => 1 }
+# p word_sizes('') == {}
 
 
 # p word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
 # p word_sizes("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
 # p word_sizes('') == {}
+
+
+
+##### Alphabetic numbers
+
+def alphabetic_number_sort(array)
+  num_hash = {
+    0 => "zero",
+    1 => "one", 
+    2 => "two", 
+    3 => "three", 
+    4 => "four", 
+    5 => "five", 
+    6 => "six", 
+    7 => "seven", 
+    8 => "eight", 
+    9 => "nine",
+    10 => "ten", 
+    11 => "eleven", 
+    12 => "twelve",
+    13 => "thirteen", 
+    14 => "fourteen", 
+    15 => "fifteen", 
+    16 => "sixteen", 
+    17 => "seventeen", 
+    18 => "eighteen", 
+    19 => "nineteen"
+  }
+ 
+
+  numbered_array = array.sort_by do |num|
+    num_hash[num]
+  end 
+  
+ 
+end 
+
+
+p alphabetic_number_sort((0..19).to_a) == [
+  8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17,
+  6, 16, 10, 13, 3, 12, 2, 0
+]
