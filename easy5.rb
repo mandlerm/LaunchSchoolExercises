@@ -141,9 +141,34 @@
 # p swap('a') == 'a'
 
 
-def cleanup(sentence)
-  sentence.gsub(/[^a-zA-Z]/,' ').squeeze(' ')
+# def cleanup(sentence)
+#   sentence.gsub(/[^a-zA-Z]/,' ').squeeze(' ')
+# end 
+
+
+# p cleanup("---what's my +*& line?") == ' what s my line '
+
+
+
+#########. Letter Counter Pt 1
+
+
+def word_sizes(sentence)
+  
+  sentence.split.each_with_object({}) do |word, hsh|
+    size = word.size 
+
+     if hsh[size] != nil
+      hsh[size] += 1
+    else 
+      hsh[size] = 1
+    end 
+
+  end 
+
 end 
 
 
-p cleanup("---what's my +*& line?") == ' what s my line '
+p word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
+p word_sizes("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
+p word_sizes('') == {}
