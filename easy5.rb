@@ -136,6 +136,15 @@
 #   result.join(' ')
 # end
 
- p swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
-p swap('Abcde') == 'ebcdA'
-p swap('a') == 'a'
+#  p swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
+# p swap('Abcde') == 'ebcdA'
+# p swap('a') == 'a'
+
+
+def cleanup(sentence)
+
+
+end 
+
+
+cleanup("---what's my +*& line?") == ' what s my line '
