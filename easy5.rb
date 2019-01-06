@@ -188,40 +188,112 @@
 
 ##### Alphabetic numbers
 
-def alphabetic_number_sort(array)
-  num_hash = {
-    0 => "zero",
-    1 => "one", 
-    2 => "two", 
-    3 => "three", 
-    4 => "four", 
-    5 => "five", 
-    6 => "six", 
-    7 => "seven", 
-    8 => "eight", 
-    9 => "nine",
-    10 => "ten", 
-    11 => "eleven", 
-    12 => "twelve",
-    13 => "thirteen", 
-    14 => "fourteen", 
-    15 => "fifteen", 
-    16 => "sixteen", 
-    17 => "seventeen", 
-    18 => "eighteen", 
-    19 => "nineteen"
-  }
+# def alphabetic_number_sort(array)
+#   num_hash = {
+#     0 => "zero",
+#     1 => "one", 
+#     2 => "two", 
+#     3 => "three", 
+#     4 => "four", 
+#     5 => "five", 
+#     6 => "six", 
+#     7 => "seven", 
+#     8 => "eight", 
+#     9 => "nine",
+#     10 => "ten", 
+#     11 => "eleven", 
+#     12 => "twelve",
+#     13 => "thirteen", 
+#     14 => "fourteen", 
+#     15 => "fifteen", 
+#     16 => "sixteen", 
+#     17 => "seventeen", 
+#     18 => "eighteen", 
+#     19 => "nineteen"
+#   }
  
 
-  numbered_array = array.sort_by do |num|
-    num_hash[num]
-  end 
+#   numbered_array = array.sort_by do |num|
+#     num_hash[num]
+#   end 
   
  
+# end 
+
+
+# p alphabetic_number_sort((0..19).to_a) == [
+#   8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17,
+#   6, 16, 10, 13, 3, 12, 2, 0
+# ]
+
+
+
+# iterate through each character of the string
+# if string[index + 1 ] == string[index]
+# => delete that character
+
+# def crunch(sentence)
+
+#   counter = 0
+#   squished = ''
+#   loop do 
+#     char = sentence[counter]
+#     squished << sentence[char] if sentence[counter] != sentence[counter + 1]
+    
+#     counter += 1
+    
+#     break if counter >= sentence.length
+#   end 
+#   squished
+# end 
+
+
+
+# p crunch('ddaaiillyy ddoouubbllee') == 'daily double'
+# p crunch('4444abcabccba') == '4abcabcba'
+# p crunch('ggggggggggggggg') == 'g'
+# p crunch('a') == 'a'
+# p crunch('') == ''
+
+
+
+def print_in_box(string)
+
+  length = string.size 
+  width = length + 2
+  height = 7 
+
+  # create top and bottom
+  top = "+"
+  width.times { |_| top << '-'}
+  top << "+"
+
+  p top 
+  l_r_border = ''
+  height.times do |iteration| 
+
+    if iteration == 4 
+      p string 
+    elsif iteration.odd?
+      p
+      next 
+    else 
+       l_r_border = row(width)
+      p l_r_border
+    end
+ end 
+  p top
+
 end 
 
 
-p alphabetic_number_sort((0..19).to_a) == [
-  8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17,
-  6, 16, 10, 13, 3, 12, 2, 0
-]
+def row(l_r)
+   "| #{l_r.times { |i| ' '} }|"
+end   
+
+print_in_box('')
+# print_in_box('To boldly go where no one has gone before.')
+
+
+
+
