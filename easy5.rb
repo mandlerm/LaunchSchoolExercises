@@ -257,43 +257,68 @@
 
 
 
-def print_in_box(string)
+# def print_in_box(string)
 
-  length = string.size 
-  width = length + 2
-  height = 7 
-
-  # create top and bottom
-  top = "+"
-  width.times { |_| top << '-'}
-  top << "+"
-
-  p top 
-  l_r_border = ''
-  height.times do |iteration| 
-
-    if iteration == 4 
-      p string 
-    elsif iteration.odd?
-      p
-      next 
-    else 
-       l_r_border = row(width)
-      p l_r_border
-    end
- end 
-  p top
-
-end 
-
-
-def row(l_r)
-   "| #{l_r.times { |i| ' '} }|"
-end   
-
-print_in_box('')
 # print_in_box('To boldly go where no one has gone before.')
 
 
 
+#####  After Midnight
+
+# MINUTES_PER_HOUR = 60
+# HOURS_PER_DAY = 24
+# MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR
+
+# def time_of_day(delta_minutes)
+  
+#   p delta_minutes % MINUTES_PER_DAY
+# end 
+
+
+# time_of_day(0) == "00:00"
+# time_of_day(-3) == "23:57"
+# time_of_day(35) == "00:35"
+# time_of_day(-1437) == "00:03"
+# time_of_day(3000) == "02:00"
+# time_of_day(800) == "13:20"
+# time_of_day(-4231) == "01:29"
+
+
+
+#####  Bannerize
+
+def print_in_box(sentence)
+
+  width = sentence.size
+  trunc_sent = ''
+  if width > 80
+    trunc_sent = sentence(0..79)
+    width = 80
+  end
+  
+  # top_bottom = ''
+  # top_bottom << "+-"
+  # width.times { |w| top_bottom << '-' }
+  # top_bottom << '-+'
+  
+  top_bottom = "+#{'-' * (sentence.size + 2)}+"
+  row = "|#{' ' * (sentence.size + 2)}|"
+  
+
+  # row = "| "
+  # width.times { |w| row << ' ' }
+  # row << ' |'
+
+  sentence_row = '| ' << sentence << ' |'
+
+  p top_bottom
+  p row
+  p sentence_row
+  p row
+  p top_bottom
+
+end 
+
+print_in_box('To boldly go where no one has gone before.')
+print_in_box('')
 
