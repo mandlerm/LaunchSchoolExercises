@@ -287,38 +287,42 @@
 
 #####  Bannerize
 
-def print_in_box(sentence)
+# def print_in_box(sentence)
 
-  width = sentence.size
-  trunc_sent = ''
-  if width > 80
-    trunc_sent = sentence(0..79)
-    width = 80
-  end
+#   width = sentence.size
+#   trunc_sent = ''
+#   if width > 80
+#     trunc_sent = sentence(0..79)
+#     width = 80
+#   end
   
-  # top_bottom = ''
-  # top_bottom << "+-"
-  # width.times { |w| top_bottom << '-' }
-  # top_bottom << '-+'
+#   # top_bottom = ''
+#   # top_bottom << "+-"
+#   # width.times { |w| top_bottom << '-' }
+#   # top_bottom << '-+'
   
-  top_bottom = "+#{'-' * (sentence.size + 2)}+"
-  row = "|#{' ' * (sentence.size + 2)}|"
+#   top_bottom = "+#{'-' * (sentence.size + 2)}+"
+#   row = "|#{' ' * (sentence.size + 2)}|"
   
 
-  # row = "| "
-  # width.times { |w| row << ' ' }
-  # row << ' |'
+#   # row = "| "
+#   # width.times { |w| row << ' ' }
+#   # row << ' |'
 
-  sentence_row = '| ' << sentence << ' |'
+#   sentence_row = '| ' << sentence << ' |'
 
-  p top_bottom
-  p row
-  p sentence_row
-  p row
-  p top_bottom
+#   p top_bottom
+#   p row
+#   p sentence_row
+#   p row
+#   p top_bottom
 
-end 
+# end 
 
-print_in_box('To boldly go where no one has gone before.')
-print_in_box('')
+# print_in_box('To boldly go where no one has gone before.')
+# print_in_box('')
 
+
+###### Spin in Circles
+
+def 
