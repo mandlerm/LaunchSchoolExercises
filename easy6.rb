@@ -182,46 +182,201 @@
 
 # END
 
-def reverse(array)
-  new_array = []
+# def reverse(array)
+#   # new_array = []
 
-  array.each {|item| new_array.unshift(item)}
+#   # array.each {|item| new_array.unshift(item)}
 
-  new_array
+#   array.inject([]) do |new_array, item|
+#     new_array.unshift(item)
+#   end 
+# end 
 
-end 
 
 
+# p reverse([1,2,3,4]) == [4,3,2,1]          # => true
+# p reverse(%w(a b e d c)) == %w(c d e b a)  # => true
+# p reverse(['abc']) == ['abc']              # => true
+# p reverse([]) == []                        # => true
 
-p reverse([1,2,3,4]) == [4,3,2,1]          # => true
-p reverse(%w(a b e d c)) == %w(c d e b a)  # => true
-p reverse(['abc']) == ['abc']              # => true
-p reverse([]) == []                        # => true
-
-p list = [1, 3, 2]                      # => [1, 3, 2]
-p new_list = reverse(list)              # => [2, 3, 1]
-p list.object_id != new_list.object_id  # => true
-p list == [1, 3, 2]                     # => true
-p new_list == [2, 3, 1]                 
+# p list = [1, 3, 2]                      # => [1, 3, 2]
+# p new_list = reverse(list)              # => [2, 3, 1]
+# p list.object_id != new_list.object_id  # => true
+# p list == [1, 3, 2]                     # => true
+# p new_list == [2, 3, 1]                 
 
 
 
 # ##### 6
 
+# INPUT: two arrays
+# OUTPUT: single array with all valuse merged, removing dups
 
+# START
+# zip the two arrays, flatten, .uniq
+
+# def merge(array1, array2)
+
+#   p array1.zip(array2).flatten.uniq.sort
+
+#   p (array1 << array2).flatten.uniq
+# end 
+
+# p merge([1, 3, 5], [3, 6, 9]) == [1, 3, 5, 6, 9]
 
 
 # ##### 7
 
+# INPUT: single array of elements
+# OUTPUT: a nested array - with 2 sub arrays, which each hold 1/2 of the original elements
+# If original array.odd?  then nested[0] has the extra element
+
+# START
+# SET new_array = []
+# determine if array.size.odd?
+# if odd
+# => midpoint = array.size / 2 + 1
+# => new_array << [array[0]..array[midpoint]] << [array[midpoint + 1]..array[-1]]
+# RETURN new_array
 
 
+# def halvsies(array)
+
+#   new_array = []
+#   midpoint = 0
+#   if array.size.odd? 
+#     midpoint = array.size / 2 + 1
+#   else 
+#     midpoint = array.size / 2
+#   end  
+
+#   new_array << array[0..midpoint - 1] << array[midpoint..-1]
+
+#   new_array
+
+
+# end 
+
+# p halvsies([1, 2, 3, 4]) == [[1, 2], [3, 4]]
+# p halvsies([1, 5, 2, 4, 3]) == [[1, 5, 2], [4, 3]]
+# p halvsies([5]) == [[5], []]
+# p halvsies([]) == [[], []]
 
 # ##### 8
+# INPUT: an array with a single duplicate value
+# OUTPUT: that duplicate value
+# TASK: create a storage array.  iterate through the array. check if new value is included in that storage array.  If no, << new array in. If yes, return that value
+
+# START 
+# create a new_hash (.inject)
+# SET duplicate = nil
+# => iterate over the array, 
+# => if hsh.key?(array_val)
+# => duplicate = array_val
+# => break
+# => else
+# => hsh[array_val] = false
+
+# def find_dup(array)
+#   storage_array = []
+#   duplicate = nil
+#   array.each do |item| 
+    
+#     if storage_array.include?(item)
+#       duplicate = item
+#       break
+#     else 
+#       storage_array << item
+#     end 
+
+  
+#   end
+# duplicate
+  
+# end 
+
+# p find_dup([1, 5, 3, 1]) == 1
+# p find_dup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
+#           38, 25, 97, 92, 46, 69, 91, 59, 53, 27,
+#           14, 61, 90, 81,  8, 63, 95, 99, 30, 65,
+#           78, 76, 48, 16, 93, 77, 52, 49, 37, 29,
+#           89, 10, 84,  1, 47, 68, 12, 33, 86, 60,
+#           41, 44, 83, 35, 94, 73, 98,  3, 64, 82,
+#           55, 79, 80, 21, 39, 72, 13, 50,  6, 70,
+#           85, 87, 51, 17, 66, 20, 28, 26,  2, 22,
+#           40, 23, 71, 62, 73, 32, 43, 24,  4, 56,
+#           7,  34, 57, 74, 45, 11, 88, 67,  5, 58]) == 73
 
 
 
 # ##### 9
+# INPUT: array, search value 
+# OUTPUT: TRUE if array contains search value, else false
+
+# START
+# Iterate throug hte array. 
+# check if search_val == array_element? TRUE : False
+
+# any
+
+
+# def include?(array, search_elem)
+
+#   array.any? { |item| search_elem == item}
+# end
+
+# p include?([1,2,3,4,5], 3) == true
+# p include?([1,2,3,4,5], 6) == false
+# p include?([], 3) == false
+# p include?([nil], nil) == true
+# p include?([], nil) == false
 
 
 
 # ##### 10
+# INPUT: integer (n)
+# OUTPUT: Puts to the screen a triangle
+# => triangle has n rows
+# => first row has 1 start
+# => add another star on each row
+# => starting point is n spaces to the right
+
+# IDEAS:
+# => make each line a string (can iterate and replace string each time)
+# => right-alight the string based on n characters
+# => repeat n times, adding another start each time
+
+# => str.rjust(n)
+
+# START
+# for i..n do 
+# => str = "*" * n 
+# => p str.rjust(n)
+
+# # END
+
+# CHALLENGE TO TRY
+# Try modifying your solution so it prints the triangle upside down from its current orientation. Try modifying your solution again so that you can display the triangle with the right angle at any corner of the grid.
+
+def triangle(length)
+  for n in 1..length  
+    str = '*' * n  
+    p str.rjust(length)
+
+  end 
+end 
+
+# def triangle(num)
+#   spaces = num - 1
+#   stars = 1
+
+#   num.times do |n|
+#     puts (' ' * spaces) + ('*' * stars)
+#     spaces -= 1
+#     stars += 1
+#   end
+# end
+
+
+triangle(5)
+
