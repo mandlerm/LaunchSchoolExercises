@@ -89,39 +89,135 @@
 # Iterate over every character
 # IF index.odd? make update UNLESS char =~ /[^a-zA-Z]/
 
-def staggered_case(string)
+# def staggered_case(string)
 
-  staggered = ''
-  string_array = string.chars 
+#   staggered = ''
+#   string_array = string.chars 
 
-  string_array.each_with_index do |ch, i|
-    if ch =~ /[a-zA-Z]/
-      i.odd? ? staggered += ch.downcase : staggered += ch.upcase
-    else 
-      staggered << ch
-    end
-  end
-  p staggered
-end
+#   string_array.each_with_index do |ch, i|
+#     if ch =~ /[a-zA-Z]/
+#       i.odd? ? staggered += ch.downcase : staggered += ch.upcase
+#     else 
+#       staggered << ch
+#     end
+#   end
+#   p staggered
+# end
 
 
-p staggered_case('I Love Launch School!') == 'I LoVe lAuNcH ScHoOl!'
-p staggered_case('ALL_CAPS') == 'AlL_CaPs'
-p staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 NuMbErS'
+
+# p staggered_case('I Love Launch School!') == 'I LoVe lAuNcH ScHoOl!'
+# p staggered_case('ALL_CAPS') == 'AlL_CaPs'
+# p staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 NuMbErS'
 ##### 6
 
+
+# def staggered_case(string)
+
+#   staggered = ''
+#   string_array = string.chars 
+#   up = TRUE
+
+#   string_array.each_with_index do |ch, i|
+#     if ch =~ /[a-zA-Z]/
+#       if up  
+#         staggered += ch.upcase 
+        
+#       else 
+#         staggered += ch.downcase 
+#       end
+#       up = !up
+#     else 
+#       staggered << ch
+#     end
+#   end
+#   staggered
+# end
+
+
+# p staggered_case('I Love Launch School!') == 'I lOvE lAuNcH sChOoL!'
+# p staggered_case('ALL CAPS') == 'AlL cApS'
+# p staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 nUmBeRs'
 
 
 ##### 7
 
+# INPUT: array of numbers
+# OUTPUT: float to 3 desimal places
 
+# DO - add all integers in the array
+# divide the sum by array.size (sprintf ??)
+
+# def show_multiplicative_average(arr)
+
+#   ave =  arr.map{|n| n.to_f}.reduce(&:*)/ arr.size
+#   ave_to_places = sprintf "%.3f", ave
+#   p "The result is #{ave_to_places}"
+# end 
+
+
+# show_multiplicative_average([3, 5])
+# # The result is 7.500
+
+# show_multiplicative_average([6])
+# # The result is 6.000
+
+# show_multiplicative_average([2, 5, 7, 11, 13, 17])
+# # The result is 28361.667
 
 ##### 8
 
+# INPUT: 2 arrays of integers
+# OUTPUT: sindle array in which each element pair is multiplied
 
+# DO: create new array
+# => iterate each_with_index
+# => multiply element by other array[index]
+
+# def multiply_list(arr1, arr2)
+#   multiples = []
+
+#   arr1.each_with_index { |n, idx| multiples << n * arr2[idx]}
+#   multiples
+# end 
+
+# def multiply_list(arr1, arr2)
+  
+#   arr1.zip(arr2).map { |x, y|  x * y }
+  
+
+# end 
+
+# p multiply_list([3, 5, 7], [9, 10, 11]) == [27, 50, 77]
 
 ##### 9
+# INPUT: 2 arrays of numbers
+# OUTPUT: single array, with product for each number pair, in increasing order
+
+# DO: use REDUCE to capture values in new array
+# => double iteration
+# return sorted array
+
+# def multiply_all_pairs(arr1, arr2)
+#   combined = []
+  
+#   arr1.map do |val1|
+#      arr2.map {|val2| combined <<  val1 * val2}
+#   end
+#   combined.sort
+# end 
+
+# p multiply_all_pairs([2, 4], [4, 3, 1, 2]) == [2, 4, 4, 6, 8, 8, 12, 16]
 
 
 
 ##### 10
+
+def penultimate(string)
+
+  string.split[-2]
+end 
+
+
+p penultimate('last word') == 'last'
+p penultimate('Launch School is great!') == 'is'
