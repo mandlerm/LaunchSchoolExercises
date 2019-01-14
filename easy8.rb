@@ -90,13 +90,11 @@ def isPalindrome?(word)
 end 
 
 # Need to amend this to have double pointers. After first iteration, move front pointer up by one += 1
+
 def substrings_at_start(str)
   subs = []
-
   str.chars.each_with_index do  |ch, i|
-
     subs << str.slice(0..i)
-
   end 
   subs.sort {|a, b| a.length <=> b.length} 
 end 
@@ -110,12 +108,9 @@ def palindromes(string)
     if isPalindrome?(s) && s.size > 1
       pal_array << s 
       
-    end 
-  end 
-  
-
+    end
+  end
   pal_array
-
 end 
 
 palindromes('abcd') == []
