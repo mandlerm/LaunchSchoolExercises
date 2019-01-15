@@ -56,11 +56,74 @@ require 'pry'
 
 ##### 4
 
+# INPUT: number - serves as limit
+# OUTPUT: array of numbers indicating which are ON
+# create an array of 1..n
+# skip_count = 1
+# DO: create hash with number 1..n as key and value as TRUE
+# NEED LOOP to iterate from 1 (or 2) through n
+# NEED INNER LOOP to toggle values each_val = ! val
+# DO: 1..n do
+# every_skip_count, create a sub_array with matching numbers
+# then remove from the original array those numbers that match the sub_array
 
+# def lights(n)
+#   array_of_lights = {}
+#   skip_count = 2
+#   (1..n).step do |num| 
+#     array_of_lights[num] = TRUE
+#   end 
+  
+#     (2..n).step do |skip| 
+#       skip.step(by: skip, to: n) do |key|
+#         array_of_lights[key] = !array_of_lights[key]
+#       end 
+#     end 
+
+#     lightbulbs = []
+#     array_of_lights.select { |k, v| lightbulbs << k if v == TRUE}
+
+#     lightbulbs
+# end 
+
+# p lights(5)
+# p lights(10)
+# p lights(1000)
 
 ##### 5
 
+# INPUT: odd integer
+# OUTPUT: print to screen - diamond
+# => n rows high
+# => n spaces wide at center
+# => skip counting by 2, from 1 to n
 
+# DO: iterate from 1 to n |current_num|
+# => create a string *.current_num times
+# => print string to screen, centered with n being argument to center
+
+def diamond(size)
+  1.step(by: 2, to: size) { |num| print_row(num, size) }
+  (size-2).step(by: -2, to: 1) { |num| print_row(num, size) }
+end
+
+# def print_row(num_of_stars, size)
+#   string = ''
+#   num_of_stars.times { string << "*" }
+#   puts string.center(size)  
+# end
+
+def print_row(num_of_stars, size)
+  string = ''
+  num_of_stars.times { string << " " }
+  string[0] = "*"
+  string[-1] = "*"
+  puts string.center(size)  
+end
+
+# diamond(1)
+# diamond(3)
+diamond(9)
 
 ##### 6
 
